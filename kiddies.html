@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SILKSWAY Kids | Fun Clothing & Gadgets</title>
+<link rel="stylesheet" href="styles.css" />
+<!-- Optional: Google Fonts for a playful look -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet" />
+<style>
+/* Basic Reset & Font */
+body {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  background-color: #fff8e1; /* Light pastel background */
+  margin: 0;
+  padding: 0;
+}
+
+/* Section Styling */
+.kiddies-layout {
+  padding: 40px 20px;
+  background-color: #fff3e0; /* Soft pastel background for section */
+}
+
+.section-head h2 {
+  font-size: 2em;
+  color: #e91e63; /* Bright pink for headings */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.section-head p {
+  font-size: 1.2em;
+  color: #555;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card Styling */
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Image Gallery */
+.image-gallery {
+  position: relative;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.main-img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #ff4081; /* Bright border for emphasis */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.main-img:hover {
+  transform: scale(1.05);
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.thumbnails img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s, transform 0.2s;
+}
+
+.thumbnails img:hover {
+  border: 2px solid #e91e63;
+  transform: scale(1.1);
+}
+
+/* Headings & Text */
+h3 {
+  font-size: 1.2em;
+  color: #ff4081; /* Bright pink for product names */
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.price {
+  font-size: 1.1em;
+  color: #4caf50; /* Green for prices */
+  text-align: center;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1em;
+  color: #555;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Buttons Styling */
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  border: none;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.btn.primary {
+  background-color: #ff4081; /* Bright pink */
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background-color: #e91e63;
+  transform: scale(1.05);
+}
+
+.btn.pay {
+  background-color: #4caf50; /* Green */
+  color: #fff;
+  margin-left: 8px;
+}
+
+.btn.pay:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+/* Small Buttons */
+.btn.small {
+  font-size: 0.8em;
+  padding: 6px 10px;
+}
+
+/* Responsive adjustments */
+@media(max-width: 600px) {
+  .section-head h2 {
+    font-size: 1.5em;
+  }
+  .card {
+    padding: 10px;
+  }
+}
+  </style>
+  </head>
+<body>
+<!-- Header / Hero Section -->
+<header class="hero kiddies-vibe">
+  <nav class="nav" aria-label="Main Navigation">
+    <div class="logo" aria-label="SILKSWAY Kids">SILKSWAY KIDS</div>
+    <div class="agent-badge">Cool Agent: Fun Helper</div>
+    <button class="hamburger" aria-label="Toggle navigation menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#clothing">Boy & Girls Clothes</a></li>
+      <li><a href="#Men's Casual Shoes">Kids Clothing</a></li>
+      <li><a href="#electronics">Gadgets & Fun Devices</a></li>
+      <li><a href="#galaxy">All Fun Stuff</a></li>
+      <li><a href="girls.html">Girls' Collection</a></li>
+      <li><a href="checkout.html">Cart (<span id="cartNavCount">0</span>)</a></li>
+      
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content kiddies-vibe">
+    <p class="tag">Playful Fun &amp; Cool Deals</p>
+    <h1 class="headline">Adventure Starts Here!</h1>
+    <p class="subheading">
+      Shop cool toys, funky clothes, and gadgets for kids — quick WhatsApp orders!
+    </p>
+    <div class="cta-buttons">
+      <a class="btn primary" href="#toys">Explore Toys</a>
+      <a class="btn secondary" href="inquiry.html?fun=true" target="_blank" rel="noopener noreferrer">Ask Us Anything!</a>
+    </div>
+  </div>
+</header>
+
+
+
+<!-- Kids Clothing Section -->
+<section class="section kiddies-layout" id="clothing">
+  <div class="section-head">
+    <h2>Kids' Cool Wear & Fun Styles</h2>
+    <p>Bright, comfy, and super fun outfits for your little stars.</p>
+  </div>
+
+  <div class="grid">
+    <!-- Product Card 1 -->
+    <article class="card">
+      <div class="image-gallery">
+        <img id="mainImage1" src="img/kiddies1.png" alt="Colorful Winter Jacket" class="main-img" />
+        <div class="thumbnails">
+          <img src="img/kiddies2.png" alt="Thumbnail 2" onmouseenter="setMainImageOnHover('mainImage1', 'img/kiddies2.png')">
+          <img src="img/kiddies4.png" alt="Thumbnail 4" onmouseenter="setMainImageOnHover('mainImage1', 'img/kiddies4.png')">
+          <img src="img/kiddies3.png" alt="Thumbnail 3" onmouseenter="setMainImageOnHover('mainImage1', 'img/kiddies3.png')">
+        </div>
+      </div>
+      <h3>Colorful Winter Jacket</h3>
+      <p class="price">R450</p>
+      <p>Warm, bright, and perfect for chilly days of fun!</p>
+      <div class="card-actions">
+        <button class="btn primary small" onclick="window.open('inquiry.html?price=450&product=Colorful Winter Jacket', '_blank')">Ask About This!</button>
+        <a class="btn pay small" href="checkout.html">Buy Now</a>
+      </div>
+    </article>
+
+    <!-- Product Card 2 -->
+    <article class="card">
+      <div class="image-gallery">
+        <img id="mainImage2" src="img/kiddies5.png" alt="Kids Casual Outfit" class="main-img" />
+        <div class="thumbnails">
+          <img src="img/kiddies6.png" alt="Thumbnail 1" onmouseenter="setMainImageOnHover('mainImage2', 'img/kiddies6.png')">
+          <img src="img/kiddies7.png" alt="Thumbnail 2" onmouseenter="setMainImageOnHover('mainImage2', 'img/kiddies7.png')">
+          <img src="img/kiddies8.png" alt="Thumbnail 3" onmouseenter="setMainImageOnHover('mainImage2', 'img/kiddies8.png')">
+        </div>
+      </div>
+      <h3>Bright Kids' Casual Set</h3>
+      <p class="price">R1050</p>
+      <p>Colorful, comfy, and ready for playtime adventures!</p>
+      <div class="card-actions">
+        <button class="btn primary small" onclick="window.open('inquiry.html?price=1050&product=Bright Kids Casual Set', '_blank')">Ask About This!</button>
+        <a class="btn pay small" href="checkout.html">Buy Now</a>
+      </div>
+    </article>
+
+  
+
+    <!-- Product Card 5 -->
+    <article class="card">
+      <div class="image-gallery">
+        <img id="mainImage5" src="img/kiddies9.png" alt="Kids Hoodie" class="main-img" />
+        <div class="thumbnails">
+          <img src="img/kiddies10.png" alt="Thumbnail 1" onmouseenter="setMainImageOnHover('mainImage5', 'img/kiddies10.png')">
+          <img src="img/kiddies11.png" alt="Thumbnail 2" onmouseenter="setMainImageOnHover('mainImage5', 'img/kiddies11.png')">
+          <img src="img/kiddies12.png" alt="Thumbnail 3" onmouseenter="setMainImageOnHover('mainImage5', 'img/kiddies12.png')">
+        </div>
+      </div>
+      <h3>Cool Kids Hoodie</h3>
+      <p class="price">R360</p>
+      <p>Bold and cozy hoodie for everyday fun!</p>
+      <div class="card-actions">
+        <button class="btn primary small" onclick="window.open('inquiry.html?price=360&product=Cool Kids Hoodie', '_blank')">Ask About This!</button>
+        <a class="btn pay small" href="checkout.html">Buy Now</a>
+      </div>
+    </article>
+
+    <!-- Product Card 6 -->
+    <article class="card">
+      <div class="image-gallery">
+        <img id="mainImage6" src="img/kiddies21.png" alt="Kids Jeans" class="main-img" />
+        <div class="thumbnails">
+          <img src="img/kiddies22.png" alt="Thumbnail 1" onmouseenter="setMainImageOnHover('mainImage6', 'img/kiddies22.png')">
+          <img src="img/kiddies23.png" alt="Thumbnail 2" onmouseenter="setMainImageOnHover('mainImage6', 'img/kiddies23.png')">
+          <img src="img/kiddies24.png" alt="Thumbnail 3" onmouseenter="setMainImageOnHover('mainImage6', 'img/kiddies24.png')">
+        </div>
+      </div>
+      <h3>Colorful Kids Jeans</h3>
+      <p class="price">R420</p>
+      <p>Strong, stylish, and perfect for playtime!</p>
+      <div class="card-actions">
+        <button class="btn primary small" onclick="window.open('inquiry.html?price=420&product=Colorful Kids Jeans', '_blank')">Ask About This!</button>
+        <a class="btn pay small" href="checkout.html">Buy Now</a>
+      </div>
+    </article>
+
+
+      <!-- Product Card 3 -->
+    <article class="card">
+      <div class="image-gallery">
+        <img id="mainImage3" src="img/kiddies91.png" alt="Kids Tracksuit" class="main-img" />
+        <div class="thumbnails">
+          <img src="img/kiddies92.png" alt="Thumbnail 1" onmouseenter="setMainImageOnHover('mainImage3', 'img/kiddies92.png')">
+          <img src="img/kiddies93.png" alt="Thumbnail 2" onmouseenter="setMainImageOnHover('mainImage3', 'img/kiddies93.png')">
+          <img src="img/kiddies94.png" alt="Thumbnail 3" onmouseenter="setMainImageOnHover('mainImage3', 'img/kiddies94.png')">
+        </div>
+      </div>
+      <h3>Fun Tracksuit</h3>
+      <p class="price">R850</p>
+      <p>Comfy, warm, and perfect for active kids on the go!</p>
+      <div class="card-actions">
+        <button class="btn primary small" onclick="window.open('inquiry.html?price=850&product=Fun Tracksuit', '_blank')">Ask About This!</button>
+        <a class="btn pay small" href="checkout.html">Buy Now</a>
+      </div>
+    </article>
+
+    <!-- Product Card 4 -->
+    <article class="card">
+      <div class="image-gallery">
+        <img id="mainImage4" src="img/kiddies13.png
+        " alt="Denim Jacket" class="main-img" />
+        <div class="thumbnails">
+          <img src="img/kiddies14.png" alt="Thumbnail 1" onmouseenter="setMainImageOnHover('mainImage4', 'img/kiddies14.png')">
+          <img src="img/kiddies15.png" alt="Thumbnail 2" onmouseenter="setMainImageOnHover('mainImage4', 'img/kiddies15.png')">
+          <img src="img/kiddies16.png" alt="Thumbnail 3" onmouseenter="setMainImageOnHover('mainImage4', 'img/kiddies16.png')">
+        </div>
+      </div>
+      <h3>Colorful Denim Jacket</h3>
+      <p class="price">R420</p>
+      <p>Stylish and fun denim for cool kids' adventures!</p>
+      <div class="card-actions">
+        <button class="btn primary small" onclick="window.open('inquiry.html?price=420&product=Colorful Denim Jacket', '_blank')">Ask About This!</button>
+        <a class="btn pay small" href="checkout.html">Buy Now</a>
+      </div>
+    </article>
+
+<!-- Product Card 7 -->
+    <article class="card">
+      <div class="image-gallery">
+        <img id="mainImage7" src="img/kiddies25.png" alt="Kids T-Shirt" class="main-img" />
+        <div class="thumbnails">
+          <img src="img/kiddies26.png" alt="Thumbnail 1" onmouseenter="setMainImageOnHover('mainImage7', 'img/kiddies26.png')">
+          <img src="img/kiddies27.png" alt="Thumbnail 2" onmouseenter="setMainImageOnHover('mainImage7', 'img/kiddies27.png')">
+          <img src="img/kiddies28.png" alt="Thumbnail 3" onmouseenter="setMainImageOnHover('mainImage7', 'img/kiddies28.png')">
+        </div>
+      </div>
+      <h3>Colorful Kids T-Shirt</h3>
+      <p class="price">R250</p>
+      <p>Cute and comfortable t-shirt for little fashionistas!</p>
+      <div class="card-actions">
+        <button class="btn primary small" onclick="window.open('inquiry.html?price=250&product=Colorful Kids T-Shirt', '_blank')">Ask About This!</button>
+        <a class="btn pay small" href="checkout.html">Buy Now</a>
+      </div>
+    </article>
+
+<!-- Product Card 8 -->
+    <article class="card">
+      <div class="image-gallery">
+        <img id="mainImage8" src="img/kiddies29.png" alt="Kids Shorts" class="main-img" />
+        <div class="thumbnails">
+          <img src="img/kiddies30.png" alt="Thumbnail 1" onmouseenter="setMainImageOnHover('mainImage8', 'img/kiddies30.png')">
+          <img src="img/kiddies31.png" alt="Thumbnail 2" onmouseenter="setMainImageOnHover('mainImage8', 'img/kiddies31.png')">
+          <img src="img/kiddies32.png" alt="Thumbnail 3" onmouseenter="setMainImageOnHover('mainImage8', 'img/kiddies32.png')"> 
+</div>
+</div>
+
+   <h3>Colorful Kids T-Shirt</h3>
+      <p class="price">R250</p>
+      <p>Cute and comfortable t-shirt for little fashionistas!</p>
+      <div class="card-actions">
+        <button class="btn primary small" onclick="window.open('inquiry.html?price=250&product=Colorful Kids T-Shirt', '_blank')">Ask About This!</button>
+        <a class="btn pay small" href="checkout.html">Buy Now</a>
+      </div>
+    </article>
+</section>
+
+
+
+
+
+
+  <section class="section alt" id="women-special">
+    <div class="section-head">
+      <h2>Women's Specials</h2>
+      <p>Check out our curated women's collection with stylish outfits and exclusive offers.</p>
+    </div>
+    <div class="card-actions" style="justify-content:center; gap:18px;">
+      <a class="btn primary" href="women.html">Shop Women's Items</a>
+      <a class="btn secondary" href="women.html">View Collection</a>
+    </div>
+  </section>
+
+
+
+
+  <section class="section alt Men's Casual Shoes-section" id="Men's Casual Shoes">
+    <div class="section-head">
+      <h2>Fun Accessories for Every Occasion</h2>
+      <p>Step Into Style, Play With Confidence!.</p>
+    </div>
+
+    <div class="grid shoes-grid">
+      <article class="card">
+        <div class="image-gallery">
+          <img src="img/kiddies33.png" alt="High-Top Basketball Shoes" class="main-img" />
+        </div>
+        <h3>Gift For Her/Him 2pcs</h3>
+        <p class="price">R500</p>
+        <p>Multi-Item Party Favor Packs, Summer Novelty Water Gun - Outdoor Entertainment.</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=500&product=Gift For Her/Him 2pcs', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+
+
+      
+
+      <article class="card">
+        <div class="image-gallery">
+          <img src="img/kiddies35.png" alt="Sports Hiking Shoes" class="main-img" />
+        </div>
+        <h3>Women's Costumes Accessories</h3>
+        <p class="price">R400</p>
+        <p>(299pcs) Cute And Playful Transparent Butterfly Hair Clips And Headbands, Adorned with Sparkling Rhinestones.</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=1600&product=Women\'s Costumes Accessories', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="image-gallery">
+          <img src="img/kiddies36.png" alt="Sandals" class="main-img" />
+        </div>
+        <h3>Boxing Gloves And Punching Bag Set</h3>
+        <p class="price">R600</p>
+        <p>Outdoor Activity Training Boxing Bag Toy, Suitable for Ages 3+, Perfect Birthday Or Holiday Gift.</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=600&product=Boxing Gloves And Punching Bag Set', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="image-gallery">
+          <img src="img/kiddies37.png" alt="Men's Dress Shoes" class="main-img" />
+        </div>
+        <h3>Unicorn</h3>
+        <p class="price">R500</p>
+        <p>6pcs UnicornMagic theme stretchy breathable caps - Multicolor Pastel for &, Birthdays, Bedtime, Bathing - Soft Hair Care Hat (6 Colors).</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=500&product=Unicorn', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+
+  <!-- Electronics Section -->
+  <section class="section alt" id="electronics">
+    <div class="section-head">
+      <h2>Electronics</h2>
+      <p>Starter section for gadgets and trending devices.</p>
+    </div>
+
+
+    
+    <div class="grid">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="image" role="button" aria-label="MQUDUO Karaoke Toy Set with Microphone" onclick="openModal('img/watch.jpg')">
+          <img src="img/kiddies38.png" alt="MQUDUO Karaoke Toy Set with Microphone" />
+        </div>
+        <h3>MQUDUO Karaoke Toy Set with Microphone</h3>
+        <p class="price">R500</p>
+        <p>Adjustable Stand, Flashing Lights for Fun Musical Effects, Christmas, Halloween, Thanksgiving, and New Year Gifts, Karaoke Toys Gift for Boys/Girls</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=500&product=MQUDUO Karaoke Toy Set with Microphone', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+
+
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="image" role="button" aria-label="Drone" onclick="openModal('img/speaker.jpg')">
+          <img src="img/kiddies39.png" alt="Drone" />
+        </div>
+        <h3>Drone</h3>
+        <p class="price">R2500</p>
+        <p>XJ3 Brushless Drone with HD FPV Camera, 180 Degree Electric Tilt Lens, Full Protection Frame, RC Quadcopter for Kids And Adults</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=2500&product=Drone', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="image" role="button" aria-label="Wireless Earbuds" onclick="openModal('img/earbuds.jpg')">
+          <img src="img/kiddies40.png" alt="Wireless Earbuds" />
+        </div>
+        <h3>Full Touchscreen Smartwatch</h3>
+        <p class="price">R700</p>
+        <p>2026 New Youngsters' Smartwatch/Smartwatch - 18 Built-in Games - Educational Game Watch for Youngsters, USB Charging - Silicone Strap, Photo/Album, Alarm/Step Counter, Watch Face</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=700&product=Full Touchscreen Smartwatch', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+
+
+  
+
+
+  <!-- Galaxy Section -->
+  <section class="section alt" id="galaxy">
+    <div class="section-head">
+      <h2>Galaxy Collection</h2>
+      <p>Unleash the power of innovation with our premium Galaxy-style electronics gear.</p>
+    </div>
+
+
+    <div class="grid">
+      <article class="card">
+        <div class="image" role="button" aria-label="Backpacke" onclick="openModal('img/aa.jpg')">
+          <img src="img/kiddies41.png" alt="Backpack" />
+        </div>
+        <h3>Backpack</h3>
+        <p class="price">R500</p>
+        <p>Cute Print Girls' Kindergarten Backpack - Lightweight Durable School Bag with Adjustable Straps & Zipper Closure for Ages 3-6 Years, School Backpack, Daycare, Playful Design, Easy to Carry, Young Kids.</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=500&product=Backpack', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+
+
+
+
+      <article class="card">
+        <div class="image" role="button" aria-label="Rotating UFO Toy Set" onclick="openModal('img/j.jpg')">
+          <img src="img/kiddies42.png" alt="Rotating UFO Toy Set" />
+        </div>
+        <h3>Rotating UFO Toy Set</h3>
+        <p class="price">R400</p>
+        <p>Novel String-driven Flying Toy, One Launcher and Two UFOs, Suitable for Parent-child Interaction and Outdoor Games (random Colors)</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=400&product=Rotating UFO Toy Set', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+
+
+
+
+
+      <article class="card">
+        <div class="image" role="button" aria-label="Umbrellas" onclick="openModal('img/cc.jpg')">
+          <img src="img/kiddies43.png" alt="Umbrellas" />
+        </div>
+        <h3>Umbrellas</h3>
+        <p class="price">R800</p>
+        <p>2 Pack Kids Clear Umbrellas for Rain Dome Bubble Umbrella Windproof for Toddler Boys Girls</p>
+        <div class="card-actions">
+          <button class="btn primary small" onclick="window.open('inquiry.html?price=800&product=Umbrellas', '_blank')">Click to Make Inquiry</button>
+          <a class="btn pay small" href="checkout.html">Checkout</a>
+        </div>
+      </article>
+    </div>
+  
+
+
+
+
+  <!-- Featured Products Section -->
+  <section class="section" id="products">
+    <div class="section-head">
+      <h2>Featured Products</h2>
+      <p>Check out our top picks with quick navigation.</p>
+    </div>
+
+    <div class="carousel">
+      <button class="prev-btn">&lt;</button>
+      <div class="carousel-container">
+        <!-- Product 1 -->
+        <div class="carousel-content" data-index="0">
+          <img src="img/kiddies44.png" alt="Wheelbarrow Cart Toy Set Includes Sand Shovel" /> 
+          <h3>Wheelbarrow Cart Toy Set Includes Sand Shovel</h3>
+          <p class="price">R1000</p>
+          <p>BABY HOME Outdoor Beach Wheelbarrow Cart Toy Set Includes Sand Shovel, Watering Can, And Additions (Sand Not Included) Indoor And Outdoor Garden Toy for Boys And Girls Ages [Random Accessory Color].</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=1000&product=Wheelbarrow Cart Toy Set Includes Sand Shovel', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Wheelbarrow Cart Toy Set Includes Sand Shovel', '1000')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+
+        <!-- Product 2 -->
+        <div class="carousel-content" data-index="1" style="display:none;">
+          <img src="img/kiddies45.png" alt="A Set of 4 Random Mini Handheld Fans" /> 
+          <h3>A Set of 4 Random Mini Handheld Fans</h3>
+          <p class="price">R600</p>
+          <p>Featuring a Colorful Cat Design. Manual Operation, No Electricity Required. Perfect for Cooling Down in Summer, and Makes an Excellent Gift. Batteries Not Included.</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=399&product=A Set of 4 Random Mini Handheld Fans', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('A Set of 4 Random Mini Handheld Fans', '399')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+
+
+        <!-- Product 3 -->
+        <div class="carousel-content" data-index="2" style="display:none;">
+          <img src="img/kiddies46.png" alt="Black Denim Casual Street Style with Lapel" /> 
+          <h3>Black Denim Casual Street Style with Lapel</h3>
+          <p class="price">R750</p>
+          <p>2pcs Boys' Autumn Back-To-School Outfit for Ages 3-8, Ripped Details, Button-Up Long Sleeve Jacket And Pocketed Elastic Waist Long Pants, Comfortable And Fashionable for Daily Wear, Perfect for Spring</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=750&product=Black Denim Casual Street Style with Lapel', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Black Denim Casual Street Style with Lapel', '750')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+        <!-- Product 4 -->
+        <div class="carousel-content" data-index="3" style="display:none;">
+          <img src="img/kiddies47.png" alt="Shorts, White Tank Top, and Sleeveless Suit" /> 
+          <h3>Shorts, White Tank Top, and Sleeveless Suit</h3>
+          <p class="price">R400</p>
+          <p>Girls' Summer Casual 3-Piece Set, Perfect for Outdoor Activities, Outdoor Playwear | Summer Clothing | Polyester Fabric, Perfect for Outdoor</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=400&product=Shorts, White Tank Top, and Sleeveless Suit', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Shorts, White Tank Top, and Sleeveless Suit', '400')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="carousel-content" data-index="4" style="display:none;">
+          <img src="img/kiddies48.png" alt="Gentleman Four-Piece Set for Boys" /> 
+          <h3>Gentleman Four-Piece Set for Boys</h3>
+          <p class="price">R500</p>
+          <p>With Short Sleeves, Festive Outfit for Boys, Gentleman Suit, Shorts Set, Sporty And Stylish for Casual Partiesr</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=500&product=Gentleman Four-Piece Set for Boys', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Gentleman Four-Piece Set for Boys', '500')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+        <!-- Product 6 -->
+        <div class="carousel-content" data-index="5" style="display:none;">
+          <img src="img/kiddies49.png" alt="Denim Sete" /> 
+          <h3>Denim Set</h3>
+          <p class="price">R450</p>
+          <p>Girls' Daily Casual Denim Set, Bow Denim Top. Ruffle Elastic Waist Jeans, Denim Set with Belt, Perfect for Outdoor.</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=450&product=iPhone Case', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('iPhone Case', '450')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+
+        
+
+
+
+        <!-- Product 8 -->
+        <div class="carousel-content" data-index="7" style="display:none;">
+          <img src="img/kiddies50.png" alt="Sneakers" /> 
+          <h3>Sneakers</h3>
+          <p class="price">R650</p>
+          <p>Boys' High-Top Casual Sneakers - Hook-and-Loop Closure, Lightweight Durable Non-Slip EVA Sole, Breathable Fabric & Synthetic Synthetic Upper, All-Season Outdoor Hiking Running Shoes for School, Sports, Parties, and Casual Attire, Hiking Shoes, School Footwear, Sporty Design, Cushioned Support, Sneaker For Boy, Shoe For Boy, School Shoe For Boy, Sneaker For Girl, Basket For Boy.</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=650&product=Sneakers', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Sneakers', '650')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="carousel-content" data-index="6" style="display:none;">
+          <img src="img/kiddies52.png" alt="Boxing Gloves" /> 
+          <h3>Boxing Gloves</h3>
+          <p class="price">R1100</p>
+          <p>Boxing Gloves for Training with Adjustable Straps.</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=1100&product=Boxing Gloves', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Boxing Gloves', '1100')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+
+        <!-- Product 9 -->
+        <div class="carousel-content" data-index="8" style="display:none;">
+          <img src="img/kiddies51.png" alt="Ruffled Slim-Fit T-Shirt and Flounce Skirt" /> 
+          <h3>Ruffled Slim-Fit T-Shirt and Flounce Skirt</h3>
+          <p class="price">R600</p>
+          <p>Summer Fashion Set: Girls' Ruffled Slim-Fit T-Shirt and Flounce Skirt, Suitable for School, Y2K Style, Streetwear. Ideal for Summer. Does Not Include Glasses, Bag, or Necklace</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=600&product=Ruffled Slim-Fit T-Shirt and Flounce Skirt', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Ruffled Slim-Fit T-Shirt and Flounce Skirt', '600')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+
+
+
+        <!-- Product 10 -->
+        <div class="carousel-content" data-index="9" style="display:none;">
+          <img src="img/kiddies53.png" alt="Roller Skate Wheels" /> 
+          <h3>Roller Skate Wheels</h3>
+          <p class="price">R900</p>
+          <p>6pcs of 100mm Roller Skate Wheels (6pcs), Made of Professional Silent and Wear-resistant PU Material, Suitable for Upgrading, Replacing, and Repairing (inline Skate) Wheels, Professional Roller Skating..</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=900&product=Roller Skate Wheels', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Roller Skate Wheels', '900')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+
+
+        <!-- Product 11 -->
+        <div class="carousel-content" data-index="10" style="display:none;">
+          <img src="img/kiddies54.png" alt="Short Top And Ruffled Mini Skirt" /> 
+          <h3>Short Top And Ruffled Mini Skirt</h3>
+          <p class="price">R700</p>
+          <p>Women'S Sexy Asymmetrical Hem Short Top And Ruffled Mini Skirt Set</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=700&product=Short Top And Ruffled Mini Skirt', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Short Top And Ruffled Mini Skirt', '700')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+        <!-- Product 12 -->
+        <div class="carousel-content" data-index="11" style="display:none;">
+          <img src="img/kiddies56.png" alt="Wireless Lapel Microphone" /> 
+          <h3>Wireless Lapel Microphone</h3>
+          <p class="price">R700</p>
+          <p>Kouzone Front Door Decor Summer Party 2pcs Set Wireless Lapel Microphone for Android Phones, Plug And Play Wireless Microphone Noise Reduction Mini Mic for Video Recording Interview Podcast Vlog Youtube Tiktok Gift for Him</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=700&product=Wireless Lapel Microphone', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Wireless Lapel Microphone', '700')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+
+
+        <!-- Product 13 -->
+        <div class="carousel-content" data-index="12" style="display:none;">
+          <img src="img/kiddies57.png" alt="Shorts" /> 
+          <h3>Tactical Chest</h3>
+          <p class="price">R600</p>
+          <p>Features Adjustable Straps, Various Pockets, Perfect for Running, Hiking, Sports, And Workouts, Safe Storage Compartment | Stylish Black Design | Sturdy Zippered Pockets</p>
+          <div class="card-actions">
+            <button class="btn primary small" onclick="window.open('inquiry.html?price=600&product=Tactical Chest', '_blank')">Click to Make Inquiry</button>
+            <button class="btn secondary small add-cart" onclick="addToCart('Tactical Chest', '600')">Add to Cart</button>
+            <a class="btn pay small" href="checkout.html">Checkout</a>
+          </div>
+        </div>
+        <!-- Product 14 -->
+
+      </div>
+      <button class="next-btn">&gt;</button> 
+    </div>
+
+</section>
+  
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <h2>About SILKSWAY</h2>
+      <p>Your Premier Destination for Quality Clothing & Electronics</p>
+    </div>
+    <div class="about-content">
+      <div class="about-box">
+        <h3>Our Mission</h3>
+        <p>SILKSWAY is a Durban-based brand built on the foundation of quality, style, and hustle. We deliver premium clothing and cutting-edge electronics to customers who demand the best. Our commitment is to make fashion and technology accessible without compromising on quality.</p>
+      </div>
+      <div class="about-box">
+        <h3>Why Choose Us</h3>
+        <ul class="about-list">
+          <li>✓ Premium Quality Products</li>
+          <li>✓ Competitive Pricing</li>
+          <li>✓ Fast & Easy Ordering via WhatsApp</li>
+          <li>✓ Delivery to Your Convenience</li>
+          <li>✓ Dedicated Customer Support</li>
+        </ul>
+      </div>
+      <div class="about-box">
+        <h3>Our Vision</h3>
+        <p>We are growing into a comprehensive online store offering a curated selection of the latest clothing trends and innovative electronics. Every product is handpicked to ensure you get the best value for your money.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <div class="section-head">
+      <h2>Get in Touch</h2>
+      <p>Quick Support & WhatsApp Ordering</p>
+    </div>
+    <div class="contact-content">
+      <div class="contact-box">
+        <div class="contact-icon">📞</div>
+        <h3>Call Us</h3>
+        <p class="contact-detail">072 628 2500</p>
+        <p class="contact-desc">Available for inquiries and support</p>
+      </div>
+      <div class="contact-box">
+        <div class="contact-icon">✉️</div>
+        <h3>Email</h3>
+        <p class="contact-detail"><a href="mailto:gumede.njabulo1997@gmail.com">gumede.njabulo1997@gmail.com</a></p>
+        <p class="contact-desc">Send us your questions anytime</p>
+      </div>
+      <div class="contact-box">
+        <div class="contact-icon">💬</div>
+        <h3>Contact Us</h3>
+        <p class="contact-desc">Instant messaging & orders</p>
+        <a class="btn primary" href="inquiry.html" target="_blank" rel="noopener noreferrer">Click to Make Inquiry</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="paymentModalLabel">
+    <div class="modal-card">
+      <h3 id="paymentModalLabel">Payment Setup Placeholder</h3>
+      <p id="paymentText"></p>
+      <p>This button is ready for PayFast, EFT, or Cash on Delivery integration. We can connect the real payment gateway next.</p>
+      <button class="btn secondary small" onclick="closePaymentInfo()">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <div class="chat-widget" aria-label="Agent chat">
+    <button type="button" class="chat-toggle-btn" aria-label="Open chat with assistant">Chat with Agent</button>
+    <div class="chat-panel hidden" role="dialog" aria-modal="true" aria-label="Assistant chat">
+      <div class="chat-header">
+        <div>
+          <span class="chat-title">Agent: Assistant</span>
+          <span class="chat-subtitle">Ask me about the store, products, orders, or payment.</span>
+        </div>
+        <button type="button" class="chat-close-btn" aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" class="chat-input" type="text" placeholder="Ask the assistant..." aria-label="Type a message" required />
+        <button type="submit" class="btn primary chat-send-btn">Send</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

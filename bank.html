@@ -228,8 +228,24 @@
     <div class="agent-badge">Agent: Assistant</div>
     <div class="hero-actions">
       <a class="btn secondary" href="index.html">Return to Store</a>
-      <a class="btn primary" href="inquiry.html?from=bank">Open Inquiry Form</a>
+      <a class="btn primary" href="https://www.paypal.com/ncp/payment/GH6Q3CGZXNKM8">Pay Online</a>
+
+<div id="paypal-container-GH6Q3CGZXNKM8"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "GH6Q3CGZXNKM8",
+  }).render("#paypal-container-GH6Q3CGZXNKM8")
+</script>
+
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAA9d4yEJhWCQll4fOPk63WfGr8q1lWzfq6PInzB1GmtNaxPHHWsoDa0WpF_A31njltLvi2fuuBsvf4Dfg&components=hosted-buttons&disable-funding=venmo&currency=USD">
+</script>
+
+
+       <a class="btn primary" href="inquiry.html?from=bank">Open Inquiry Form</a>
+
     </div>
+
     <div id="cartPaymentSummary" class="note-box" style="display:none; margin-top:18px;">
       <!-- Cart total and items will be injected here -->
     </div>

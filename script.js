@@ -182,6 +182,7 @@ function getAssistantReply(message) {
   const productName = visibleProduct?.name || context.product;
   const productPrice = visibleProduct?.price || context.price;
   const productDescription = visibleProduct?.description || '';
+  
 
   if (/\b(hi|hello|hey|greetings|good morning|good afternoon|good evening)\b/.test(normalized)) {
     return 'Hello! I’m your assistant. Ask me about products, prices, payment, or how to place an order.';
@@ -267,6 +268,9 @@ function getAssistantReply(message) {
 
   return `I’m here to help on the ${context.pageName}. Ask me about ${context.focus} or how to make an inquiry.`;
 }
+
+
+
 function toggleChatPanel(isOpen) {
   const panel = document.querySelector('.chat-panel');
   if (!panel) return;
@@ -603,6 +607,28 @@ function setMainImageOnHover(mainImageId, imageSource) {
         mainImage.src = imageSource;
     }
 }
+
+
+
+
+// Get elements
+const kiddiesBtn = document.getElementById('kiddies-btn');
+const kiddiesSection = document.getElementById('kiddies-section');
+const continueBtn = document.getElementById('continue-btn');
+
+// Show kiddies section on main button click
+kiddiesBtn.addEventListener('click', () => {
+    kiddiesSection.style.display = 'block';
+});
+
+// Optional: You can make the continue button do something further
+continueBtn.addEventListener('click', () => {
+    alert("Keep having fun in the kiddies section!");
+    // Or you can add navigation or other actions here
+});
+
+
+
 
 
 
