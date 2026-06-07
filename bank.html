@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SILKSWAY | Bank Details</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .bank-hero {
+      position: relative;
+      padding: 80px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(15, 32, 71, 0.93), rgba(10, 23, 52, 0.94)), url('img/aa.jpg') center/cover no-repeat;
+      color: #fff;
+    }
+
+    .bank-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top center, rgba(255, 255, 255, 0.08), transparent 35%);
+    }
+
+    .bank-hero .section-head,
+    .bank-hero .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .bank-hero .tag {
+      color: #ffda6d;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .bank-hero h1 {
+      font-size: clamp(2.8rem, 4vw, 4.4rem);
+      margin: 0 0 18px;
+      line-height: 1.02;
+    }
+
+    .bank-hero p {
+      margin: 0 auto 28px;
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .bank-hero .hero-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .bank-accounts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .bank-card {
+      background: #fff;
+      border: 1px solid rgba(16, 42, 67, 0.08);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 20px 45px rgba(16, 42, 67, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 260px;
+    }
+
+    .bank-card h3 {
+      margin: 0;
+      color: #0f4c81;
+      font-size: 1.35rem;
+    }
+
+    .bank-card .status-note {
+      color: #d62828;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    .bank-card.alert-card strong::before {
+      content: "⚠";
+      color: #d62828;
+      margin-right: 8px;
+      font-size: 0.95rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .bank-card p {
+      margin: 0;
+      color: #425163;
+      line-height: 1.75;
+    }
+
+    .bank-card strong {
+      color: #102a43;
+      font-weight: 700;
+    }
+
+    .payment-steps,
+    .payment-form {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .payment-steps {
+      padding-left: 18px;
+      color: #3e4c66;
+      line-height: 1.85;
+    }
+
+    .payment-steps li {
+      margin-bottom: 14px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .payment-steps li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #0f4c81;
+      font-size: 1.2rem;
+      line-height: 1;
+      top: 0;
+    }
+
+    .note-box {
+      background: #f4f6ff;
+      border-left: 4px solid #0f4c81;
+      padding: 22px 24px;
+      border-radius: 18px;
+      color: #334158;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-top: 18px;
+    }
+
+    .payment-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .payment-form label {
+      display: grid;
+      gap: 10px;
+      font-weight: 600;
+      color: #102a43;
+    }
+
+    .payment-form input[type="text"],
+    .payment-form input[type="email"],
+    .payment-form input[type="file"],
+    .payment-form textarea {
+      padding: 14px 16px;
+      border: 1px solid rgba(16, 42, 67, 0.12);
+      border-radius: 16px;
+      background: #fff;
+      color: #102a43;
+      width: 100%;
+    }
+
+    .payment-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .payment-form button {
+      width: fit-content;
+      padding: 14px 26px;
+      border-radius: 999px;
+      border: none;
+    }
+
+    .footer-cta {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .footer-cta .btn {
+      padding: 14px 28px;
+    }
+
+    @media (max-width: 780px) {
+      .bank-hero {
+        padding: 60px 18px 48px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .bank-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .bank-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="bank-hero">
+    <div class="section-head">
+      <p class="tag">Bank transfer</p>
+      <h1>Secure payment by bank deposit</h1>
+      <p class="hero-copy">Use one of our verified accounts, upload your proof of payment, and we’ll confirm your order quickly.</p>
+    </div>
+    <div class="agent-badge">Agent: Assistant</div>
+    <div class="hero-actions">
+      <a class="btn secondary" href="index.html">Return to Store</a>
+      <a class="btn primary" href="inquiry.html?from=bank">Open Inquiry Form</a>
+    </div>
+    <div id="cartPaymentSummary" class="note-box" style="display:none; margin-top:18px;">
+      <!-- Cart total and items will be injected here -->
+    </div>
+  </header>
+
+  <main class="section">
+    <section class="section-head">
+      <h2>Available bank accounts</h2>
+      <p>Select the account that suits your order and use the reference shown for fast processing.</p>
+    </section>
+
+    <div class="bank-accounts">
+      <article class="bank-card alert-card">
+        <h3>FNB</h3>
+        <span class="status-note">Coming soon</span>
+        <p><strong>Account name:</strong> </p>
+        <p><strong>Account number:</strong> </p>
+        <p><strong>Branch code:</strong> </p>
+        <p><strong>Account type:</strong> </p>
+        <p><strong>Reference:</strong> </p>
+      </article>
+
+      <article class="bank-card alert-card">
+        <h3>Standard Bank</h3>
+        <span class="status-note">Coming soon</span>
+        <p><strong>Account name:</strong> </p>
+        <p><strong>Account number:</strong> </p>
+        <p><strong>Branch code:</strong> </p>
+        <p><strong>Account type:</strong> </p>
+        <p><strong>Reference:</strong> </p>
+      </article>
+
+      <article class="bank-card">
+        <h3>Capitec</h3>
+        <p><strong>Account name:</strong> SILKSWAY Retail</p>
+        <p><strong>Account number:</strong> 1234567890</p>
+        <p><strong>Branch code:</strong> 470010</p>
+        <p><strong>Account type:</strong> Global One</p>
+        <p><strong>Reference:</strong> Your Name + Order</p>
+      </article>
+
+      <article class="bank-card alert-card">
+        <h3>Absa</h3>
+        <span class="status-note">Coming soon</span>
+        <p><strong>Account name:</strong> </p>
+        <p><strong>Account number:</strong> </p>
+        <p><strong>Branch code:</strong> </p>
+        <p><strong>Account type:</strong> </p>
+        <p><strong>Reference:</strong> </p>
+      </article>
+    </div>
+
+    <section class="section-head" style="margin-top: 48px;">
+      <h2>Payment confirmation</h2>
+      <p>Complete the steps below after making your deposit so we can verify your payment and ship your order faster.</p>
+    </section>
+
+    <ol class="payment-steps">
+      <li>Transfer the full amount to one of the listed accounts.</li>
+      <li>Use the reference format: <strong>Your Name + Order</strong>.</li>
+      <li>Upload proof of payment using the form below.</li>
+      <li>We will confirm receipt and update you with delivery or collection details.</li>
+    </ol>
+
+    <section class="section-head" style="margin-top: 48px;">
+      <h2>Proof of payment</h2>
+      <p>Upload your bank slip, screenshot or PDF receipt so we can verify the payment without delay.</p>
+    </section>
+
+    <form action="https://formsubmit.co/gumede.njabulo1997@gmail.com" method="POST" enctype="multipart/form-data" class="payment-form">
+      <input type="hidden" name="_autoresponse" value="Thank you for sending your payment proof. We have received your submission and will review it shortly." />
+      <input type="hidden" name="_replyto" value="email" />
+      <input type="hidden" name="_subject" value="SILKSWAY payment proof received" />
+
+      <label>
+        Full name
+        <input type="text" name="name" required placeholder="Enter your full name" />
+      </label>
+
+      <label>
+        Email address
+        <input type="email" name="email" required placeholder="Enter your email" />
+      </label>
+
+      <label>
+        Proof of payment
+        <input type="file" name="proofOfPayment" accept="image/*,.pdf" required />
+      </label>
+
+      <label>
+        Amount paid and item name
+        <textarea id="paymentDetailsField" name="paymentDetails" placeholder="e.g. R450 for Winter Jacket"></textarea>
+      </label>
+
+      <button type="submit" class="btn primary">Submit proof</button>
+
+      <div class="note-box">
+        This form sends your payment proof by email. Please also send the same payment details to <strong>sales@silksway.co.za</strong> for faster confirmation.
+      </div>
+    </form>
+
+    <div class="footer-cta">
+      <a class="btn secondary" href="index.html">Back to SILKSWAY</a>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      try {
+        const raw = localStorage.getItem('silkswayCart');
+        const cart = raw ? JSON.parse(raw) : [];
+        if (!cart || cart.length === 0) return;
+
+        const itemCount = cart.reduce((s, it) => s + (it.quantity || 0), 0);
+        const total = cart.reduce((s, it) => s + (Number(it.price) || 0) * (it.quantity || 0), 0);
+        const names = cart.map(it => `${it.quantity}× ${it.name}`).join(', ');
+
+        const summaryEl = document.getElementById('cartPaymentSummary');
+        if (summaryEl) {
+          summaryEl.style.display = 'block';
+          summaryEl.innerHTML = `<strong>Cart:</strong> ${itemCount} item${itemCount===1?'':'s'} — <strong>Total: R${total.toLocaleString('en-ZA')}</strong><br><small>${names}</small>`;
+        }
+
+        const detailsField = document.getElementById('paymentDetailsField');
+        if (detailsField) {
+          detailsField.value = `R${total} for ${names}`;
+        }
+      } catch (e) {
+        console.error('Error reading cart for payment summary', e);
+      }
+    })();
+  </script>
+
+  <footer class="section" style="padding-top: 40px; padding-bottom: 40px;">
+    <div class="section-head">
+      <h2>Need help?</h2>
+      <p>If you have any questions about payment or delivery, contact us and we’ll guide you through the process.</p>
+    </div>
+    <div class="grid" style="gap: 20px;">
+      <div class="card" style="padding: 24px; border-radius: 24px; border: 1px solid rgba(16, 42, 67, 0.08); box-shadow: 0 18px 40px rgba(16, 42, 67, 0.08);">
+        <h3>Customer support</h3>
+        <p>Call or WhatsApp us on <strong>072 628 2500</strong>.</p>
+      </div>
+      <div class="card" style="padding: 24px; border-radius: 24px; border: 1px solid rgba(16, 42, 67, 0.08); box-shadow: 0 18px 40px rgba(16, 42, 67, 0.08);">
+        <h3>Email support</h3>
+        <p>Send payment details to <a href="mailto:gumede.njabulo1997@gmail.com">gumede.njabulo1997@gmail.com</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Footer with social media icons -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <div class="chat-widget" aria-label="Agent chat">
+    <button type="button" class="chat-toggle-btn" aria-label="Open chat with assistant">Chat with Agent</button>
+    <div class="chat-panel hidden" role="dialog" aria-modal="true" aria-label="Assistant chat">
+      <div class="chat-header">
+        <div>
+          <span class="chat-title">Agent: Assistant</span>
+          <span class="chat-subtitle">Ask me about the store, products, orders, or payment.</span>
+        </div>
+        <button type="button" class="chat-close-btn" aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" class="chat-input" type="text" placeholder="Ask the assistant..." aria-label="Type a message" required />
+        <button type="submit" class="btn primary chat-send-btn">Send</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

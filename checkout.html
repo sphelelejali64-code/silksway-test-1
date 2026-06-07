@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SILKSWAY | Checkout</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body class="checkout-page">
+<header class="hero">
+  <nav class="nav" aria-label="Main Navigation">
+    <div class="logo" aria-label="SILKSWAY">SILKSWAY</div>
+    <div class="agent-badge">Agent: Assistant</div>
+    <button class="hamburger" aria-label="Toggle navigation menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="women.html">Women's Collection</a></li>
+      <li><a href="inquiry.html" target="_blank" rel="noopener noreferrer">Inquiry</a></li>
+      <li><a href="checkout.html">Cart (<span id="cartNavCount">0</span>)</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <p class="tag">Checkout</p>
+    <h1 class="headline">Review Your Cart</h1>
+    <p class="subheading">See how many items you've added, the total price, and the full list of product names.</p>
+    <div class="cta-buttons">
+      <a class="btn primary" href="index.html">Continue Shopping</a>
+      <a class="btn secondary" href="bank.html">Proceed to Payment</a>
+    </div>
+  </div>
+</header>
+
+<main id="checkoutPage" class="section">
+  <div class="section-head">
+    <h2>Your Checkout Cart</h2>
+    <p>Everything you've added is stored in your browser until you clear it or complete your order.</p>
+  </div>
+  <div id="checkoutContent"></div>
+</main>
+
+<script src="script.js"></script>
+  <div class="chat-widget" aria-label="Agent chat">
+    <button type="button" class="chat-toggle-btn" aria-label="Open chat with assistant">Chat with Agent</button>
+    <div class="chat-panel hidden" role="dialog" aria-modal="true" aria-label="Assistant chat">
+      <div class="chat-header">
+        <div>
+          <span class="chat-title">Agent: Assistant</span>
+          <span class="chat-subtitle">Ask me about the store, products, orders, or payment.</span>
+        </div>
+        <button type="button" class="chat-close-btn" aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" class="chat-input" type="text" placeholder="Ask the assistant..." aria-label="Type a message" required />
+        <button type="submit" class="btn primary chat-send-btn">Send</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

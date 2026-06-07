@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Form</title>
+<!-- Font Awesome CDN for social media icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+:root {
+  color-scheme: light;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #102a43;
+  background: #e8f1ff;
+  --surface: #ffffff;
+  --surface-muted: #f5f9ff;
+  --text-primary: #102a43;
+  --text-secondary: #52646f;
+  --accent: #0f4c81;
+  --accent-soft: #eaf3ff;
+  --accent-strong: #ffba08;
+  --border: rgba(16, 42, 67, 0.12);
+  --radius: 22px;
+  --shadow: 0 22px 45px rgba(16, 42, 67, 0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eef6ff 0%, #e8f1ff 100%);
+  font-family: inherit;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.page-wrapper {
+  width: min(540px, 100%);
+}
+
+.home-btn {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 20px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.home-btn:hover {
+  background: #0b3a69;
+}
+
+.chat-widget {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+  font-family: inherit;
+}
+
+.chat-toggle-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 20px;
+  background: #0f4c81;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(15, 76, 129, 0.18);
+}
+
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  width: min(360px, 100vw);
+  max-height: 520px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 32px 90px rgba(16, 42, 67, 0.16);
+  overflow: hidden;
+  margin-top: 14px;
+}
+
+.chat-panel.hidden {
+  display: none;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  background: #102a43;
+  color: #fff;
+}
+
+.chat-title {
+  font-weight: 700;
+}
+
+.chat-subtitle {
+  display: block;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 4px;
+}
+
+.chat-close-btn {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  overflow-y: auto;
+  min-height: 240px;
+  max-height: 320px;
+  background: #f4f6fc;
+}
+
+.chat-bubble {
+  display: inline-block;
+  max-width: 100%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  line-height: 1.5;
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background: #0f4c81;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.assistant {
+  align-self: flex-start;
+  background: #fff;
+  color: #102a43;
+  border: 1px solid rgba(16, 42, 67, 0.12);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-form {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  background: #fff;
+  border-top: 1px solid rgba(16, 42, 67, 0.08);
+}
+
+.chat-input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(16, 42, 67, 0.16);
+}
+
+.chat-send-btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .chat-widget {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .chat-panel {
+    width: calc(100vw - 28px);
+    max-height: 78vh;
+  }
+}
+
+.form-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 34px;
+}
+
+h2 {
+  margin: 0 0 26px;
+  font-size: clamp(1.9rem, 2.2vw, 2.4rem);
+  text-align: center;
+}
+
+.field-group {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agent-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  color: #102a43;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: 1px solid rgba(16, 42, 67, 0.12);
+  margin-bottom: 18px;
+}
+
+.agent-badge.light {
+  background: #fff;
+  color: #102a43;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: #f0f2f5;
+  color: #7a8494;
+  cursor: not-allowed;
+  border-color: rgba(16, 42, 67, 0.08);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.12);
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-row.columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background: #0b3a69;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.social-icons a {
+  color: var(--accent);
+  font-size: 1.35rem;
+  transition: color 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: #0b3a69;
+}
+
+@media (max-width: 520px) {
+  .form-row.columns {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+  <button class="home-btn" onclick="window.location.href='index.html'">Back to Home</button>
+  <div class="agent-badge light">Agent: Assistant</div>
+
+  <div class="form-container">
+  <h2>Contact Us</h2>
+  <div id="cartInquirySummary" class="note-box" style="display:none; margin-bottom:14px;">
+    <!-- Cart summary will be injected here -->
+  </div>
+  <form action="https://formsubmit.co/gumede.njabulo1997@gmail.com" method="POST">
+    <input type="hidden" name="product" value="">
+    <input type="hidden" name="price" value="">
+    <input id="hidden_quantity" type="hidden" value="1">
+    <input type="hidden" name="color" value="">
+    <input type="hidden" name="size" value="">
+    
+    <div class="field-group">
+      <label for="name">Your Name</label>
+      <input id="name" type="text" name="name" placeholder="Your Name" required>
+    </div>
+    <div class="field-group">
+      <label for="phone">Phone Number</label>
+      <input id="phone" type="tel" name="phone" placeholder="Your Phone Number" required>
+    </div>
+    <div class="field-group">
+      <label for="product_name">Product</label>
+      <select name="product_name" id="product_name" required>
+      <option value="">Select Product</option>
+      <option value="Winter Jacket" data-price="450">Winter Jacket - R450</option>
+      <option value="3pcs Men's Casual Fashion Streetwear Printed Hooded Sweatshirt" data-price="1050">3pcs Men's Casual Fashion Streetwear Printed Hooded Sweatshirt - R1050</option>
+      <option value="Street Tracksuit" data-price="850">Street Tracksuit - R850</option>
+      <option value="Hoodies & Sweatshirts" data-price="420">Hoodies & Sweatshirts - R420</option>
+      <option value="Street Hoodie" data-price="360">Street Hoodie - R360</option>
+      <option value="Premium Jeans" data-price="420">Premium Jeans - R420</option>
+      <option value="Checked Shirt" data-price="320">Checked Shirt - R320</option>
+      <option value="Cargo Pants" data-price="390">Cargo Pants - R390</option>
+      <option value="Street Runner" data-price="320">Street Runner - R320</option>
+      <option value="Casual Slip-On" data-price="290">Casual Slip-On - R290</option>
+      <option value="Bold High-Tops" data-price="410">Bold High-Tops - R410</option>
+      <option value="Everyday Trainers" data-price="360">Everyday Trainers - R360</option>
+      <option value="Smartwatch" data-price="800">Smartwatch - R800</option>
+      <option value="Portable Bluetooth Speaker" data-price="1400">Portable Bluetooth Speaker - R1400</option>
+      <option value="Podcast Equipment Bundle" data-price="1500">Podcast Equipment Bundle - R1500</option>
+      <option value="WEEME" data-price="600">WEEME - R600</option>
+      <option value="Rechargeable Soundbar" data-price="420">Rechargeable Soundbar - R420</option>
+      <option value="Wireless Earphone" data-price="600">Wireless Earphone - R600</option>
+      <option value="Smart Watch" data-price="399">Smart Watch - R399</option>
+      <option value="Bluetooth Speaker" data-price="299">Bluetooth Speaker - R299</option>
+      <option value="Wireless Earbuds" data-price="249">Wireless Earbuds - R249</option>
+      <option value="T-Shirt" data-price="150">T-Shirt - R150</option>
+      <option value="Cap" data-price="100">Cap - R100</option>
+      <option value="Hoodie" data-price="300">Hoodie - R300</option>
+      <option value="Jeans" data-price="400">Jeans - R400</option>
+      <option value="Sweater" data-price="250">Sweater - R250</option>
+      <option value="Backpack" data-price="200">Backpack - R200</option>
+      <option value="Shorts" data-price="180">Shorts - R180</option>
+      <option value="Women's Street Hoodie" data-price="380">Women's Street Hoodie - R380</option>
+      <option value="Women's Checked Shirt" data-price="310">Women's Checked Shirt - R310</option>
+      <option value="Women's Premium Jeans" data-price="420">Women's Premium Jeans - R420</option>
+      <option value="Women's Sweatshirt" data-price="390">Women's Sweatshirt - R390</option>
+      <option value="Women's Tracksuit" data-price="540">Women's Tracksuit - R540</option>
+      <option value="Women's Cargo Pants" data-price="380">Women's Cargo Pants - R380</option>
+    </select>
+    </div>
+    <div class="field-group">
+      <label for="product_price">Price</label>
+      <input id="product_price" type="number" step="0.01" name="product_price" placeholder="Price" required readonly>
+    </div>
+    <div class="field-group">
+      <label for="product_quantity">Quantity</label>
+      <input id="product_quantity" type="number" name="product_quantity" value="1" min="1" required>
+    </div>
+    
+    <!-- Color selection with "Other" option -->
+    <div class="field-group">
+      <label for="product_color">Color</label>
+      <select name="product_color" id="product_color" required>
+      <option value="">Select Color</option>
+      <option value="Red">Red</option>
+      <option value="Blue">Blue</option>
+      <option value="Green">Green</option>
+      <option value="Black">Black</option>
+      <option value="White">White</option>
+      <option value="Other">Other</option>
+    </select>
+    </div>
+    
+    <!-- Custom color input, initially hidden -->
+    <div id="customColorDiv" style="display: none; margin-top: 10px;">
+      <input type="text" name="custom_color" id="custom_color" placeholder="Specify custom color" style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+    
+    <!-- Size selection -->
+    <div class="field-group">
+      <label for="product_size">Size</label>
+      <select name="product_size" id="product_size" required>
+      <option value="">Select Size</option>
+      <option value="Small">Small</option>
+      <option value="Medium">Medium</option>
+      <option value="Large">Large</option>
+      <option value="X-Large">X-Large</option>
+    </select>
+    
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</div>
+</div>
+
+<!-- Footer with social media icons -->
+<footer>
+  <div class="social-icons">
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  // Handle color selection and show/hide custom color input
+  const colorSelect = document.getElementById('product_color');
+  const customColorDiv = document.getElementById('customColorDiv');
+  const customColorInput = document.getElementById('custom_color');
+  const productSelect = document.getElementById('product_name');
+  const priceInput = document.getElementById('product_price');
+  const quantityInput = document.getElementById('product_quantity');
+  const hiddenProduct = document.querySelector('input[name="product"]');
+  const hiddenPrice = document.querySelector('input[name="price"]');
+  const hiddenQuantity = document.getElementById('hidden_quantity');
+  const hiddenColor = document.querySelector('input[name="color"]');
+  const hiddenSize = document.querySelector('input[name="size"]');
+  const sizeSelect = document.getElementById('product_size');
+
+  function updateHiddenFields() {
+    hiddenColor.value = colorSelect.value || '';
+    hiddenSize.value = sizeSelect.value || '';
+    hiddenQuantity.value = quantityInput.value || '1';
+  }
+
+  function selectProductOption(productName, productPrice) {
+    const decodedName = decodeURIComponent(productName || '');
+    let selectedOption = Array.from(productSelect.options).find(
+      (option) => option.value === decodedName || option.textContent.trim() === decodedName
+    );
+
+    if (!selectedOption && productPrice) {
+      selectedOption = Array.from(productSelect.options).find(
+        (option) => option.getAttribute('data-price') === productPrice
+      );
+    }
+
+    if (selectedOption) {
+      productSelect.value = selectedOption.value;
+      const price = selectedOption.getAttribute('data-price');
+      hiddenProduct.value = selectedOption.value;
+      hiddenPrice.value = price || productPrice || '';
+      priceInput.value = price || productPrice || '';
+    } else if (decodedName) {
+      hiddenProduct.value = decodedName;
+      hiddenPrice.value = productPrice || '';
+      priceInput.value = productPrice || '';
+    }
+  }
+
+  colorSelect.addEventListener('change', function() {
+    updateHiddenFields();
+    if (this.value === 'Other') {
+      customColorDiv.style.display = 'block';
+      customColorInput.required = true;
+    } else {
+      customColorDiv.style.display = 'none';
+      customColorInput.value = '';
+      customColorInput.required = false;
+    }
+  });
+
+  productSelect.addEventListener('change', function() {
+    const selectedOption = this.options[this.selectedIndex];
+    const price = selectedOption.getAttribute('data-price');
+    hiddenProduct.value = selectedOption.value || '';
+    hiddenPrice.value = price || '';
+    priceInput.value = price || '';
+  });
+
+  sizeSelect.addEventListener('change', updateHiddenFields);
+  quantityInput.addEventListener('input', updateHiddenFields);
+
+  // Preserve previously selected value if any
+  const urlParams = new URLSearchParams(window.location.search);
+  const product = urlParams.get('product');
+  const price = urlParams.get('price');
+  const general = urlParams.get('general');
+  const fromBank = urlParams.get('from') === 'bank';
+
+  if (product || price) {
+    selectProductOption(product, price);
+  } else if (general) {
+    // For general inquiry, leave fields empty
+  }
+
+  if (fromBank) {
+    productSelect.disabled = true;
+    priceInput.disabled = true;
+    quantityInput.disabled = true;
+    hiddenQuantity.name = 'product_quantity';
+  }
+
+  updateHiddenFields();
+</script>
+
+<script>
+  (function() {
+    const fromBank = new URLSearchParams(window.location.search).get('from') === 'bank';
+    if (!fromBank) return;
+
+    try {
+      const raw = localStorage.getItem('silkswayCart');
+      const cart = raw ? JSON.parse(raw) : [];
+      if (!cart || cart.length === 0) return;
+
+      const itemCount = cart.reduce((s, it) => s + (it.quantity || 0), 0);
+      const total = cart.reduce((s, it) => s + (Number(it.price) || 0) * (it.quantity || 0), 0);
+      const names = cart.map(it => `${it.quantity}× ${it.name}`).join(', ');
+
+      const summaryEl = document.getElementById('cartInquirySummary');
+      if (summaryEl) {
+        summaryEl.style.display = 'block';
+        summaryEl.innerHTML = `<strong>Cart:</strong> ${itemCount} item${itemCount===1?'':'s'} — <strong>Total: R${total.toLocaleString('en-ZA')}</strong><br><small>${names}</small>`;
+      }
+
+      // Prefill hidden fields for inquiry form only when coming from bank.html
+      const hiddenProduct = document.querySelector('input[name="product"]');
+      const hiddenPrice = document.querySelector('input[name="price"]');
+      if (hiddenProduct) hiddenProduct.value = names;
+      if (hiddenPrice) hiddenPrice.value = total;
+
+      // If single item, select it in the product dropdown and set the visible price input
+      if (cart.length === 1) {
+        const first = cart[0];
+        const productSelect = document.getElementById('product_name');
+        const priceInput = document.getElementById('product_price');
+        if (productSelect) productSelect.value = first.name;
+        if (priceInput) priceInput.value = first.price;
+      }
+    } catch (e) {
+      console.error('Error prefilling inquiry form from cart', e);
+    }
+  })();
+</script>
+  <script src="script.js"></script>
+  <div class="chat-widget" aria-label="Agent chat">
+    <button type="button" class="chat-toggle-btn" aria-label="Open chat with assistant">Chat with Agent</button>
+    <div class="chat-panel hidden" role="dialog" aria-modal="true" aria-label="Assistant chat">
+      <div class="chat-header">
+        <div>
+          <span class="chat-title">Agent: Assistant</span>
+          <span class="chat-subtitle">Ask me about the store, products, orders, or payment.</span>
+        </div>
+        <button type="button" class="chat-close-btn" aria-label="Close chat">×</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" class="chat-input" type="text" placeholder="Ask the assistant..." aria-label="Type a message" required />
+        <button type="submit" class="btn primary chat-send-btn">Send</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
